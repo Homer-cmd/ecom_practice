@@ -1,9 +1,20 @@
-const product = () => {
+import { useContext } from "react";
+import { ShopContext} from '../../context/ShopContext';
+import { useParams } from "react-router-dom";
+import Breadcrum from "../../components/breadcrum/Breadcrum";
+
+
+const Product = () => {
+    const {all_product} = useContext(ShopContext);
+    const {productId} = useParams();
+    const product = all_product.find((e) => e.id === Number(productId));
     return ( 
-        <div className="product">
-            <h1>this is product</h1>
+        <div>
+            <Breadcrum product = {product}/>
         </div>
      );
 }
  
-export default product;
+export default Product;
+
+
